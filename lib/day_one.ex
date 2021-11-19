@@ -31,7 +31,6 @@ defmodule DayOne do
     |> find_product_from_file(&find_triplet_2020/1)
   end
 
-
   def find_product_from_file(file, find_func) do
     file
     |> File.read!()
@@ -40,6 +39,7 @@ defmodule DayOne do
     |> find_func.()
     |> Enum.product()
   end
+
 
 
   def find_triplet_2020([x | tl]) do
