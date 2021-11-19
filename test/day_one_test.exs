@@ -20,10 +20,6 @@ defmodule DayOneTest do
     assert find_target(2019, [0, 2018, 0, 1]) == [2018, 1]
   end
 
-  test "find pair from file" do
-    assert find_pair_from_file("priv/testinput.txt") == [1,2019]
-  end
-
   test "calculate from file" do
     assert calculate("priv/testinput.txt") == 2019
   end
