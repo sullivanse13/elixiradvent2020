@@ -25,7 +25,6 @@ defmodule DayOneTest do
   end
 
   test "calculate from input" do
-
     IO.puts("\n pair product is #{calculate("priv/dayoneinput.txt")}\n")
   end
 
@@ -41,8 +40,8 @@ defmodule DayOneTest do
   end
 
   test "calculate triplet_product_from_file input triplet" do
-    IO.puts("\n triplet_product_from_file is #{triplet_product_from_file("priv/dayoneinput.txt")}\n")
+    IO.puts(
+      "\n triplet_product_from_file is #{triplet_product_from_file("priv/dayoneinput.txt")}\n"
+    )
   end
-
-
 end

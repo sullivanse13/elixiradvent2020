@@ -2,7 +2,6 @@ defmodule DayTwoTest do
   use ExUnit.Case
   import DayTwo
 
-
   #
   # _ parse line
   # _ parse range in line
@@ -26,9 +25,7 @@ defmodule DayTwoTest do
   end
 
   test "count valid in list" do
-    list = ["1-3 a: abcde",
-      "1-3 b: cdefg",
-      "2-9 c: ccccccccc"]
+    list = ["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"]
 
     assert count_valid_passwords_range(list) == 2
   end
@@ -38,9 +35,10 @@ defmodule DayTwoTest do
   end
 
   test "from input count of valid by range" do
-    IO.puts("\nvalid password count range: #{count_valid_passwords_range("priv/day_two_input.txt")}\n")
+    IO.puts(
+      "\nvalid password count range: #{count_valid_passwords_range("priv/day_two_input.txt")}\n"
+    )
   end
-
 
   test "count from file position" do
     assert count_valid_passwords_position("priv/day_two_input_test.txt") == 1
@@ -48,15 +46,14 @@ defmodule DayTwoTest do
   end
 
   test "is valid positional" do
-    assert is_valid_positional(["1","3", "a", "abcde"])
-    refute is_valid_positional(["1","3", "b", "cdefg"])
-    refute is_valid_positional(["2","9", "c", "ccccccccc"])
+    assert is_valid_positional(["1", "3", "a", "abcde"])
+    refute is_valid_positional(["1", "3", "b", "cdefg"])
+    refute is_valid_positional(["2", "9", "c", "ccccccccc"])
   end
 
   test "from input count of valid by position" do
-    IO.puts("\nvalid password count position: #{count_valid_passwords_position("priv/day_two_input.txt")}\n")
+    IO.puts(
+      "\nvalid password count position: #{count_valid_passwords_position("priv/day_two_input.txt")}\n"
+    )
   end
-
-
-
 end

@@ -1,7 +1,6 @@
 defmodule DayTwo do
   @moduledoc false
 
-
   def count_valid_passwords_position(file) do
     file
     |> File.read!()
@@ -11,9 +10,9 @@ defmodule DayTwo do
   end
 
   def is_valid_positional([low, high, required, string]) do
-    [low,high]
+    [low, high]
     |> Enum.map(&String.to_integer/1)
-    |> Enum.map(fn x -> x-1 end)
+    |> Enum.map(fn x -> x - 1 end)
     |> Enum.map(fn position -> String.at(string, position) end)
     |> Enum.count(fn char -> char == required end)
     |> Kernel.==(1)
@@ -27,7 +26,7 @@ defmodule DayTwo do
 
   def count_required_range(required, password) do
     password
-    |> String.codepoints
+    |> String.codepoints()
     |> Enum.count(fn x -> x == required end)
   end
 
@@ -36,7 +35,6 @@ defmodule DayTwo do
     |> Enum.member?(count_required_range(required, password))
   end
 
-
   def count_valid_passwords_range(file) when is_binary(file) do
     file
     |> File.read!()
@@ -44,11 +42,9 @@ defmodule DayTwo do
     |> count_valid_passwords_range()
   end
 
-
   def count_valid_passwords_range(list) when is_list(list) do
     list
     |> Enum.map(&parse_line_range/1)
     |> Enum.count(&is_valid_password_range/1)
   end
-
 end
