@@ -2,6 +2,36 @@ defmodule DayThreeTest do
   use ExUnit.Case
   import DayThree
 
+  # [_]
+
+  test "count specific slope" do
+    assert count_hit_trees({3,1}, num_rows(4)) == 2
+
+    assert count_hit_trees({1,1}, num_rows(4)) == 2
+    assert count_hit_trees({2,1}, num_rows(4)) == 0
+    #"O#.#"
+    #".#.#"
+    #".X.#.#.#"
+    #".#.#.#.#.#.#"
+    assert count_hit_trees({1,2}, num_rows(4)) == 1
+
+  end
+
+
+  test "product list of slopes" do
+    slopes = [{3,1}, {1,1}, {1,2}]
+
+    assert product_of_trees_hit_per_slope(num_rows(4), slopes) == 4
+
+  end
+
+
+  test "product of hit trees per slope from day three input" do
+    slopes = [{1,1},{3,1},{5,1},{7,1},{1,2}]
+    product = file_based_product_of_trees_hit_per_slope("priv/day_three_input.txt", slopes)
+    IO.puts("\nproduct trees hit #{product}\n")
+  end
+
 
   test "count hit trees from day three input" do
     IO.puts("\ntrees hit #{count_hit_trees_from_file("priv/day_three_input.txt")}\n")
@@ -35,8 +65,9 @@ defmodule DayThreeTest do
 
 
   test "generate coordinates" do
-    assert  Enum.take(coordinates(), 1) == [0]
-    assert  Enum.take(coordinates(), 3) == [0,3,6]
+    assert Enum.take(coordinates(), 1) == [0]
+    assert Enum.take(coordinates(), 3) == [0,3,6]
+    assert Enum.take(coordinates(2), 3) == [0,2,4]
   end
 
   test "is nth place a tree" do
@@ -48,11 +79,16 @@ defmodule DayThreeTest do
     assert is_tree(row, 5) == true
   end
 
-  # x- generate slope coordinates
-  # X - have row run out to right forever
-  # X - test nth item in a row for a tree
-  # X - test if place on row is tree
-  # X -count trees hit over multiple rows
+  # [x] generate slope coordinates
+  # [x] have row run out to right forever
+  # [x] test nth item in a row for a tree
+  # [x] test if place on row is tree
+  # [x] count trees hit over multiple rows
+  # [x] count from specified slope (start with right 3, down 1)
+  # [x] count from right 1x down 1 slope
+  # [x] count from set of slopes
+  # [x] product from set of slopes
+
 
 
 end

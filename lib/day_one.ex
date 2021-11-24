@@ -33,8 +33,7 @@ defmodule DayOne do
 
   def find_product_from_file(file, find_func) do
     file
-    |> File.read!()
-    |> String.split()
+    |> Utilities.read_file_to_list_of_strings
     |> Enum.map(&String.to_integer/1)
     |> find_func.()
     |> Enum.product()
