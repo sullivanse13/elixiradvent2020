@@ -2,8 +2,6 @@ defmodule DayFourTest do
   use ExUnit.Case
   import DayFour
 
-
-
   test "count valid passports in file" do
     assert count_valid_from_file("priv/day_four_input_test.txt") == 2
   end
@@ -48,12 +46,15 @@ defmodule DayFourTest do
   test "validate passport id", do: assert_field_validation("pid", ["01234567", "0123456789"])
   test "validate hair color", do: assert_field_validation("hcl", ["#123abz", "#123abz"])
   test "validate eye color", do: assert_field_validation("ecl", ["zzz", "xyz"])
-  test "validate height color", do: assert_field_validation("hgt", ["149cm", "194cm","190", "58in", "77in"])
+
+  test "validate height color",
+    do: assert_field_validation("hgt", ["149cm", "194cm", "190", "58in", "77in"])
 
   @docp """
-  [ ] stop having to handle not found error for everything?
+  TDD todo list
 
-  [ ] validate height (cm, in)
+  [x] stop having to handle not found error for everything?
+  [x] validate height (cm, in)
   [x] validate eye color
   [x] validate hair color
   [x] validate birth year
@@ -77,12 +78,16 @@ defmodule DayFourTest do
 
   defp assert_field_validation(key, invalids) do
     assert valid_passport?(@passport_one) == true
-    assert valid_passport?(Map.drop(@passport_one, [key])) == false, "should have failed with dropped key: #{key}"
+
+    assert valid_passport?(Map.drop(@passport_one, [key])) == false,
+           "should have failed with dropped key: #{key}"
+
     invalids
     |> Enum.map(fn i ->
-      assert valid_passport?(Map.put(@passport_one, key, i)) == false, "key: #{key} should fail with #{i}" end)
+      assert valid_passport?(Map.put(@passport_one, key, i)) == false,
+             "key: #{key} should fail with #{i}"
+    end)
   end
-
 
   test "validate passport" do
     assert valid_passport?(@passport_one) == true
